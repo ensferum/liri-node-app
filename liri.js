@@ -1,3 +1,7 @@
+
+//Variables for twitter, spootify, request, keys, and fs
+
+
 var twitter = require("twitter");
 var spotify = require("node-spotify-api");
 var request = require("request");
@@ -15,7 +19,7 @@ function LIRI(operator)
 		}
 		case "spotify-this-song":{
 			var song= title(operator.slice(1),"Children of Bodom")
-			songPrint(song);
+			songs(song);
 			break;
 		}
 		case "movie-this":{
@@ -46,10 +50,10 @@ function title (titleArray,generic){
 	return title;
 }
 
-function songPrint(songTitle) {
+function songs(songTitle) {
 	var client = new spotify({	
-		  id: "17356ebd079e4014b04ff9920b2591b3",
-		  secret: "730422273fe54d239bbe9f470f2342a7"
+		  id: "cb6d39f8c56049a4b3cf12d71262a002",
+		  secret: "3dcea1da91bc4729a2f3f5e2426be695"
 	});
 	client.search({ type: 'track', query: songTitle }, function(err, data) {
 	  if (err) {
@@ -66,11 +70,15 @@ function songPrint(songTitle) {
 
 function tweets(){
 	var client= new twitter({
-		consumer_key: key.consumer_key,
-  		consumer_secret: key.consumer_secret,
-  		access_token_key:  key.access_token_key,
-  		access_token_secret: key.access_token_secret
+		consumer_key: '<RLeuvZIBl0940pRtF3kdLYjwd>',
+  		consumer_secret: '<khZM8u5sU8u0d794r8vG0X9plzCNORMCKLyHhhKInhlcsvZUuu>',
+  		access_token_key: '<917064189499371521-flUMJtdMRIC59tmIRezklmGWPWLJUJM>',
+  		access_token_secret: '<S4RKZ4xeI8ryu9HktP4GADL1QBioAdTfpMJIAzkIHQRYY>',
+
 	})
+
+
+
 	var url="https://api.twitter.com/oauth/authorize"
 	client.get(url, {count:21},function(error, tweets, response) {
 	  if(error) throw error;
